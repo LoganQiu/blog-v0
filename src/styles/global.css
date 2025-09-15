@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "remark-github-blockquote-alert/alert.css";
+@import "./alert.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
@@ -180,9 +180,6 @@
   .active {
     @apply border-b-[5px] -mb-[5px];
   }
-  .markdown-alert-title {
-    @apply my-0;
-  }
   .expressive-code {
     @apply my-4;
   }
@@ -218,5 +215,18 @@
     ul {
       @apply flex flex-wrap my-0 pl-4;
     }
+  }
+
+  .art {
+    @apply 
+      text-transparent 
+      transition-all duration-200 ease-linear
+      -translate-x-1 -translate-y-1
+      [text-shadow:-2px_-2px_0_#6bb6ff,0_0_0_#51cf66,2px_2px_0_#ffd93d,4px_4px_0_#ff6b6b,6px_6px_0_#845ec2];
+  }
+  .art:hover {
+    @apply 
+      translate-x-0 translate-y-0
+      [text-shadow:-1px_-1px_0_#6bb6ff,0_0_0_#51cf66,1px_1px_0_#ffd93d,2px_2px_0_#ff6b6b,3px_3px_0_#845ec2];
   }
 }

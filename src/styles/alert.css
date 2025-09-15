@@ -1,0 +1,58 @@
+.markdown-alert {
+  --alert-note: #0066cc;
+  --alert-caution: #cc0000;
+  --alert-warning: #cc8800;
+  --alert-important: #7a4db3;
+  --alert-tip: #1a7a4d;
+}
+
+.markdown-alert {
+  border-left: .25em solid;
+  color: inherit;
+  margin-bottom: 16px;
+  padding: .5rem 1em
+}
+.markdown-alert>:last-child {
+  margin-bottom: 0!important
+}
+.markdown-alert .markdown-alert-title {
+  align-items: center;
+  display: flex;
+  font-size: 14px;
+  margin-block: 0;
+}
+.markdown-alert .markdown-alert-title svg.octicon {
+  margin-right: 8px!important;
+  fill: currentColor;
+}
+
+.markdown-alert.markdown-alert-note {
+  border-left-color: var(--alert-note);
+  .markdown-alert-title {
+    color: var(--alert-note);
+  }
+}
+.markdown-alert.markdown-alert-tip {
+  border-left-color: var(--alert-tip);
+  .markdown-alert-title {
+    color: var(--alert-tip);
+  }
+}
+.markdown-alert.markdown-alert-important {
+  border-left-color: var(--alert-important);
+  .markdown-alert-title {
+    color: var(--alert-important);
+  }
+}
+.markdown-alert.markdown-alert-warning {
+  border-left-color: var(--alert-warning);
+  .markdown-alert-title {
+    color: var(--alert-warning);
+  }
+}
+.markdown-alert.markdown-alert-caution {
+  border-left-color: var(--alert-caution);
+  .markdown-alert-title {
+    color: var(--alert-caution);
+  }
+}

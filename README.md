@@ -3,4 +3,4 @@
 ## 👀 Todo
 
 - [] Search(Pagefind)
-- [] ogImage bug
+- [] CRT(Duckquill)
