@@ -15,10 +15,10 @@ export default defineConfig({
       changefreq: "weekly",
     }),
     expressiveCode({
-      themes: ['catppuccin-latte', 'monokai'],
+      themes: ['github-light', 'dracula'],
       themeCssSelector: (theme) => {
-        if (theme.name === 'catppuccin-latte') return "[data-theme='light']";
-        if (theme.name === 'monokai') return "[data-theme='dark']";
+        if (theme.name === 'github-light') return "[data-theme='light']";
+        if (theme.name === 'dracula') return "[data-theme='dark']";
         return ':root';
       },
       wrap: false,
