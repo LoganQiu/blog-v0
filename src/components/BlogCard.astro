@@ -11,7 +11,7 @@ const { post } = Astro.props;
 const postPath = getPostPath(post);
 ---
 
-<article class="relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground">
+<div class="relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground">
   {
     post.data.pin && post.data.pin > 0 && (
       <span class="absolute -top-px -right-px p-1 text-sm text-accent border-b border-l border-dashed border-muted/40 hover:border-foreground">
@@ -31,4 +31,4 @@ const postPath = getPostPath(post);
     tags={post.data.tags}
   />
   {post.data.desc && <p class="mb-0">{post.data.desc}</p>}
-</article>
+<div/>

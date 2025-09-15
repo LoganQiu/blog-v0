@@ -15,7 +15,10 @@ export interface Props {
   katex?: boolean;
 }
 
-const { title, subtitle, description, author, pubdate, moddate, prevPost, nextPost, ogImage, katex } = Astro.props;
+const { title, subtitle, description, author, pubdate, moddate, prevPost, nextPost, ogImage, katex } = {
+  ...Astro.props,
+  ...Astro.props.frontmatter
+};
 ---
 
 <BaseLayout
