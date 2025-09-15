@@ -67,20 +67,31 @@
     @apply absolute -z-10 -top-20 text-muted font-normal text-[6em] opacity-20 pointer-events-none;
   }
   h2 {
-    @apply text-2xl my-8 font-bold border-b border-muted border-dashed;
+    @apply text-2xl my-8 font-bold border-b border-muted border-dashed md:relative;
   }
   h3 {
-    @apply text-xl my-6 font-bold italic;
+    @apply text-xl my-6 font-bold italic md:relative;
   }
   h4 {
-    @apply text-lg my-6 font-bold;
+    @apply text-lg my-6 font-bold md:relative;
   }
+  /* 小屏幕时 # 在后面 */
+  article h2::after,
+  article h3::after,
+  article h4::after {
+    content: "  #";
+    @apply text-muted/40 not-italic cursor-pointer md:hidden;
+  }
+  /* 大屏幕时 # 在前面 */
   article h2::before,
   article h3::before,
   article h4::before {
-    content: "# ";
-    @apply text-muted/40 not-italic cursor-pointer;
+    content: "#";
+    @apply hidden md:block absolute -left-6 top-0 text-muted/40 not-italic cursor-pointer;
   }
+  h2:hover::after,
+  h3:hover::after,
+  h4:hover::after,
   h2:hover::before,
   h3:hover::before,
   h4:hover::before {
