@@ -213,13 +213,10 @@
   .toc-list {
     @apply m-0 columns-1 md:columns-2 gap-6;
     li {
-      @apply break-inside-avoid text-sm my-0;
+      @apply break-inside-avoid text-sm mr-4 my-0;
     }
     ul {
       @apply flex flex-wrap my-0 pl-4;
-    }
-    ul li {
-      @apply mr-4 my-0;
     }
   }
 }
