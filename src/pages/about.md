@@ -16,4 +16,4 @@ title: About
 - unknown-2025.01.02：漂泊
 - 2025.01.02-2025.06.06：Hugo（主题由 [Yihui](https://yihui.org/) 的 [hugo-paged](https://github.com/yihui/hugo-paged) 修改而来）
 - 2025.06.06-2025.09.09：Astro（主题由 [SatNaing](https://satnaing.dev/) 的 [AstroPaper](https://github.com/satnaing/astro-paper) 修改而来）
-- 2025.09.09-present: 结合上述两个主题，用 Astro 自己 [手搓了一个](./blog/2025/astro-paged)，这回真不打算换了，就这样吧。。。
+- 2025.09.09-present: 结合上述两个主题，用 Astro 自己 [手搓了一个](../blog/2025/astro-paged)，这回真不打算换了，就这样吧。。。
