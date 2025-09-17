@@ -1,3 +1,4 @@
+// Taken from https://github.com/satnaing/astro-paper/blob/aad5ac67e43e44a7fcdaabac4f7358e0ef4d2eb2/public/toggle-theme.js
 const primaryColorScheme = ""; // "light" | "dark"
 
 // Get theme data from local storage
