@@ -4,7 +4,8 @@ import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import remarkGithubAlerts from "remark-github-blockquote-alert";
+import remarkGithubAlert from "./src/plugins/remark-github-alert.mjs";
+import remarkPlatformIcon from "./src/plugins/remark-platform-icon.mjs";
 import { SITE } from "./src/config";
 
 export default defineConfig({
@@ -40,7 +41,7 @@ export default defineConfig({
     //   wrap: false,
     //   defaultColor: false,
     // },
-    remarkPlugins: [remarkMath, remarkGithubAlerts],
+    remarkPlugins: [remarkMath, remarkGithubAlert, remarkPlatformIcon],
     rehypePlugins: [rehypeKatex],
   },
 

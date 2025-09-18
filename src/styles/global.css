@@ -240,4 +240,18 @@
       translate-x-0 translate-y-0
       [text-shadow:-1px_-1px_0_#6bb6ff,0_0_0_#51cf66,1px_1px_0_#ffd93d,2px_2px_0_#ff6b6b,3px_3px_0_#845ec2];
   }
+
+  /* Platform icons */
+  .icon {
+    @apply inline-flex align-middle;
+  }
+  .icon svg {
+    @apply w-6 h-6 fill-current;
+  }
+  .icon.mac svg {
+    @apply fill-foreground dark:fill-foreground;
+  }
+  .icon.win svg {
+    @apply fill-blue-600 dark:fill-blue-400;
+  }
 }
