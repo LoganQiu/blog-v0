@@ -15,12 +15,12 @@
   </button>
 </div>
 
-<script>
+<script is:inline data-astro-rerun>
 function initBackToTop() {
   const btnContainer = document.getElementById('btt-btn-container');
   const btn = document.getElementById('back-to-top');
   const progressRing = document.getElementById('progress-ring');
-  
+
   if (!btnContainer || !btn || !progressRing) return;
 
   // 点击回到顶部
@@ -30,10 +30,10 @@ function initBackToTop() {
   });
 
   // 滚动处理
-  let lastVisible: boolean | null = null;
+  let lastVisible = null;
   function handleScroll() {
     if (!btnContainer || !progressRing) return;
-    
+
     const rootElement = document.documentElement;
     const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
     const scrollTop = rootElement.scrollTop;
@@ -61,7 +61,7 @@ function initBackToTop() {
   let ticking = false;
   document.addEventListener('scroll', () => {
     if (!ticking) {
-      requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
         handleScroll();
         ticking = false;
       });
