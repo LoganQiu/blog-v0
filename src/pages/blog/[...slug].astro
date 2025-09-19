@@ -3,6 +3,7 @@ import { getCollection, render } from "astro:content";
 import SingleLayout from "@/layouts/SingleLayout.astro";
 import Meta from "@/components/Meta.astro";
 import TOC from "@/components/TOC.astro";
+import BackToTop from "@/components/BackToTop.astro";
 import { getPostPath, getSlugFromPath } from "@/utils/getPostPath";
 
 export async function getStaticPaths() {
@@ -75,6 +76,8 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
     <Content />
   </article>
 </SingleLayout>
+
+<BackToTop />
 
 <script>
   function addHeadingLinks() {
