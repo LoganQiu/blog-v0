@@ -37,7 +37,7 @@ function initBackToTop() {
     const rootElement = document.documentElement;
     const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
     const scrollTop = rootElement.scrollTop;
-    const scrollPercent = Math.floor((scrollTop / scrollTotal) * 100);
+    const scrollPercent = Math.min(100, Math.round((scrollTop / scrollTotal) * 100));
 
     // 更新进度环
     progressRing.style.setProperty(
