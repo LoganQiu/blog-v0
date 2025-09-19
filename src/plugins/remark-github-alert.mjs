@@ -1,3 +1,4 @@
+// edited from https://github.com/jaywcjlove/remark-github-blockquote-alert/blob/34cf98284d2a974cf42a093aa3530c9b7eb9ab68/src/index.ts
 import { visit } from 'unist-util-visit';
 
 const alertRegex = /^\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i;
