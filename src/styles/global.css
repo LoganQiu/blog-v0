@@ -243,10 +243,10 @@
 
   /* Platform icons */
   .icon {
-    @apply inline-flex align-middle;
+    @apply inline-block align-middle -translate-y-0.5;
   }
   .icon svg {
-    @apply w-6 h-6 fill-current;
+    @apply w-5 h-5 fill-current;
   }
   .icon.mac svg {
     @apply fill-foreground dark:fill-foreground;
