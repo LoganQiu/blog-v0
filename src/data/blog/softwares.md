@@ -1,5 +1,5 @@
 ---
-title: Windows & macOS 软件汇总推荐
+title: Windows & macOS 软件
 desc: Windows 和 macOS 的软件管理策略以及好用的软件推荐
 slug: softwares
 pubdate: 2024-01-03
