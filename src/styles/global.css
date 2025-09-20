@@ -33,7 +33,7 @@
   }
 
   html {
-    @apply overflow-y-auto scroll-smooth;
+    @apply overflow-y-auto;
   }
   body {
     @apply min-h-dvh relative flex flex-col bg-background text-foreground
