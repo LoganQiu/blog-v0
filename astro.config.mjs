@@ -6,6 +6,7 @@ import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
 import remarkGithubAlert from "./src/plugins/remark-github-alert.mjs";
 import remarkPlatformIcon from "./src/plugins/remark-platform-icon.mjs";
+import remarkGraphviz from './src/plugins/remark-graphviz.mjs';
 import { SITE } from "./src/config";
 
 export default defineConfig({
@@ -45,7 +46,7 @@ export default defineConfig({
     //   wrap: false,
     //   defaultColor: false,
     // },
-    remarkPlugins: [remarkMath, remarkGithubAlert, remarkPlatformIcon],
+    remarkPlugins: [remarkMath, remarkGithubAlert, remarkPlatformIcon, remarkGraphviz],
     rehypePlugins: [rehypeKatex],
   },
 

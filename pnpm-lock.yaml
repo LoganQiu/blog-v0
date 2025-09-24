@@ -20,6 +20,9 @@ importers:
       '@tailwindcss/vite':
         specifier: ^4.1.13
         version: 4.1.13(vite@6.3.6(@types/node@24.5.2)(jiti@2.6.0)(lightningcss@1.30.1))
+      '@viz-js/viz':
+        specifier: ^3.18.0
+        version: 3.18.0
       astro:
         specifier: ^5.13.10
         version: 5.13.10(@types/node@24.5.2)(jiti@2.6.0)(lightningcss@1.30.1)(rollup@4.52.2)(typescript@5.9.2)
@@ -770,6 +773,9 @@ packages:
 
   '@ungap/structured-clone@1.3.0':
     resolution: {integrity: sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==}
+
+  '@viz-js/viz@3.18.0':
+    resolution: {integrity: sha512-CVNqs/aJVpaGFpm+cYtHt4r/1FprsKsbHryW6Zb5hfzi9cZPDW49Nf0LqxnGNnAcCPtYSPXG5QkkuaRpN5uBQA==}
 
   acorn@8.15.0:
     resolution: {integrity: sha512-NZyJarBfL7nWwIq+FDL6Zp/yHEhePMNnnJ0y3qfieCrmNvYct8uvtiV41UvlSe6apAfk0fY1FbWx+NwfmpvtTg==}
@@ -2560,6 +2566,8 @@ snapshots:
   '@types/unist@3.0.3': {}
 
   '@ungap/structured-clone@1.3.0': {}
+
+  '@viz-js/viz@3.18.0': {}
 
   acorn@8.15.0: {}
 

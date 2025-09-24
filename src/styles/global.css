@@ -254,4 +254,8 @@
   .icon.win svg {
     @apply fill-blue-600 dark:fill-blue-400;
   }
+
+  .graphviz-figure {
+    @apply my-8;
+  }
 }

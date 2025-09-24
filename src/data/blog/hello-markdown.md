@@ -110,12 +110,52 @@ ni $ a^*=x-b^* $ hao
 
 Definition list:
 
-Apple
-:   Pomaceous fruit of plants of the genus Malus in
-    the family Rosaceae.
+```graphviz
+digraph G {
+  A -> B -> C;
+}
+```
 
-Orange
-:   The fruit of an evergreen tree of the genus Citrus.
+```graphviz
+digraph G {
+  size ="4,4";
+  main [shape=box]; /* this is a comment */
+  main -> parse [weight=8];
+  parse -> execute;
+  main -> init [style=dotted];
+  main -> cleanup;
+  execute -> { make_string; printf}
+  init -> make_string;
+  edge [color=red]; // so is this
+  main -> printf [style=bold,label="100 times"];
+  make_string [label="make a\nstring"];
+  node [shape=box,style=filled,color=".7 .3 1.0"];
+  execute -> compare;
+}
+```
+
+```graphviz
+digraph tree {
+  node [shape = record,height=.1];
+  node0[label = "<f0> |<f1> G|<f2> "];
+  node1[label = "<f0> |<f1> E|<f2> "];
+  node2[label = "<f0> |<f1> B|<f2> "];
+  node3[label = "<f0> |<f1> F|<f2> "];
+  node4[label = "<f0> |<f1> R|<f2> "];
+  node5[label = "<f0> |<f1> H|<f2> "];
+  node6[label = "<f0> |<f1> Y|<f2> "];
+  node7[label = "<f0> |<f1> A|<f2> "];
+  node8[label = "<f0> |<f1> C|<f2> "];
+  "node0":f2 -> "node4":f1;
+  "node0":f0 -> "node1":f1;
+  "node1":f0 -> "node2":f1;
+  "node1":f2 -> "node3":f1;
+  "node2":f2 -> "node8":f1;
+  "node2":f0 -> "node7":f1;
+  "node4":f2 -> "node6":f1;
+  "node4":f0 -> "node5":f1;
+}
+```
 
 ## [Another Section](https://www.baidu.com)
 
