@@ -11,11 +11,11 @@ const { post } = Astro.props;
 const postPath = getPostPath(post);
 ---
 
-<div class="relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground">
+<div class="relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground transition duration-400">
   {
     post.data.pin && post.data.pin > 0 && (
-      <span class="absolute -top-px -right-px p-1 text-sm text-accent border-b border-l border-dashed border-muted/40 hover:border-foreground">
-        Pin
+      <span class="absolute top-0 right-0 pt-1 pr-2 text-sm text-accent">
+        PIN
       </span>
     )
   }

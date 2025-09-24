@@ -16,18 +16,22 @@ export default defineConfig({
       changefreq: "weekly",
     }),
     expressiveCode({
-      themes: ['github-light', 'dracula'],
+      themes: ['catppuccin-mocha', 'catppuccin-latte'],
       themeCssSelector: (theme) => {
-        if (theme.name === 'github-light') return "[data-theme='light']";
-        if (theme.name === 'dracula') return "[data-theme='dark']";
+        if (theme.name === 'catppuccin-latte') return "[data-theme='light']";
+        if (theme.name === 'catppuccin-mocha') return "[data-theme='dark']";
         return ':root';
       },
       wrap: false,
       styleOverrides: {
-        borderWidth: "1px",
+        borderColor: "color-mix(in srgb, var(--muted) 20%, transparent)",
+        borderRadius: '0',
         codeFontFamily: "var(--font-code)",
         codeFontSize: "0.75rem",
         codePaddingInline: "1.5rem",
+        frames: {
+          frameBoxShadowCssValue: false,
+        },
       },
     })
   ],
