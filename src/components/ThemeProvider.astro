@@ -1,0 +1,78 @@
+{/* Inlined to avoid FOUC. This is a parser blocking script. */}
+<script is:inline>
+  const lightModePref = window.matchMedia("(prefers-color-scheme: light)");
+
+  function getUserPref() {
+    const storedTheme = typeof localStorage !== "undefined" && localStorage.getItem("theme");
+    return storedTheme || (lightModePref.matches ? "light" : "dark");
+  }
+
+  function updateThemeColorMeta() {
+    const body = document.body;
+    if (!body) {
+      return;
+    }
+
+    const bgColor = window.getComputedStyle(body).backgroundColor;
+    document
+      .querySelector("meta[name='theme-color']")
+      ?.setAttribute("content", bgColor ?? "");
+  }
+
+  function setTheme(newTheme) {
+    if (newTheme !== "light" && newTheme !== "dark") {
+      console.warn(
+        `Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`,
+      );
+      return;
+    }
+
+    const root = document.documentElement;
+
+    if (newTheme === root.getAttribute("data-theme")) {
+      return;
+    }
+
+    root.setAttribute("data-theme", newTheme);
+
+    if (typeof localStorage !== "undefined") {
+      localStorage.setItem("theme", newTheme);
+    }
+
+    requestAnimationFrame(updateThemeColorMeta);
+  }
+
+  setTheme(getUserPref());
+
+  document.addEventListener("DOMContentLoaded", updateThemeColorMeta);
+
+  document.addEventListener("astro:after-swap", () => {
+    setTheme(getUserPref());
+    updateThemeColorMeta();
+  });
+
+  document.addEventListener("theme-change", (event) => {
+    const { theme } = event.detail ?? {};
+    if (theme === "light" || theme === "dark") {
+      setTheme(theme);
+    }
+  });
+
+  lightModePref.addEventListener("change", (event) => {
+    setTheme(event.matches ? "light" : "dark");
+  });
+
+  document.addEventListener("astro:before-swap", (event) => {
+    const currentThemeColor = document
+      .querySelector("meta[name='theme-color']")
+      ?.getAttribute("content");
+
+    if (!currentThemeColor) {
+      return;
+    }
+
+    event.newDocument
+      .querySelector("meta[name='theme-color']")
+      ?.setAttribute("content", currentThemeColor);
+  });
+</script>

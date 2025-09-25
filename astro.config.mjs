@@ -7,14 +7,16 @@ import rehypeKatex from "rehype-katex";
 import remarkGithubAlert from "./src/plugins/remark-github-alert.mjs";
 import remarkPlatformIcon from "./src/plugins/remark-platform-icon.mjs";
 import remarkGraphviz from './src/plugins/remark-graphviz.mjs';
+import d2 from "astro-d2";
 import { SITE } from "./src/config";
 
 export default defineConfig({
   site: SITE.website,
 
   integrations: [
-    sitemap({
-      changefreq: "weekly",
+    sitemap(),
+    d2({
+      layout: "elk",
     }),
     expressiveCode({
       themes: ['catppuccin-mocha', 'catppuccin-latte'],

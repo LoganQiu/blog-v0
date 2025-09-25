@@ -1,0 +1,65 @@
+---
+---
+
+<theme-toggle class="flex">
+  <button type="button" aria-label="auto" class="flex">
+    <span class="inline dark:hidden">&olcir;</span>
+    <span class="hidden dark:inline">&ofcir;</span>
+  </button>
+</theme-toggle>
+
+<script>
+  const getRootTheme = () => document.documentElement.getAttribute("data-theme") || "light";
+
+  class ThemeToggle extends HTMLElement {
+    connectedCallback() {
+      const button = this.querySelector("button");
+      if (!button) {
+        console.warn("ThemeToggle: no button element found.");
+        return;
+      }
+
+      const syncState = () => {
+        const theme = getRootTheme();
+        button.setAttribute("aria-checked", String(theme === "dark"));
+        button.setAttribute("aria-label", theme);
+      };
+
+      const handleClick = () => {
+        const current = getRootTheme();
+        const nextTheme = current === "dark" ? "light" : "dark";
+        document.dispatchEvent(
+          new CustomEvent("theme-change", {
+            detail: { theme: nextTheme },
+          }),
+        );
+        requestAnimationFrame(syncState);
+      };
+
+      button.setAttribute("role", "switch");
+      button.addEventListener("click", handleClick);
+      document.addEventListener("theme-change", syncState);
+      document.addEventListener("astro:after-swap", syncState);
+
+      const observer = new MutationObserver(syncState);
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+
+      syncState();
+
+      this.cleanup = () => {
+        observer.disconnect();
+        button.removeEventListener("click", handleClick);
+        document.removeEventListener("theme-change", syncState);
+        document.removeEventListener("astro:after-swap", syncState);
+      };
+    }
+
+    disconnectedCallback() {
+      this.cleanup?.();
+    }
+  }
+
+  if (!customElements.get("theme-toggle")) {
+    customElements.define("theme-toggle", ThemeToggle);
+  }
+</script>

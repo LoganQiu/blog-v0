@@ -3,6 +3,7 @@ import { ClientRouter } from "astro:transitions";
 import { Font } from "astro:assets";
 import Header from "@/components/Header.astro";
 import Footer from "@/components/Footer.astro";
+import ThemeProvider from "@/components/ThemeProvider.astro";
 import { SITE } from "@/config";
 import "@/styles/global.css";
 
@@ -144,8 +145,6 @@ if (pageType === "home") {
     <link rel="alternate" type="application/rss+xml" title={SITE.title} href="/rss.xml" />
     <!-- JSON-LD Structured Data -->
     <script is:inline type="application/ld+json" set:html={JSON.stringify(jsonLd)} />
-
-    <script is:inline src="/toggle-theme.js"></script>
     {
       (katex || SITE.katex) && (
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css" />
@@ -154,6 +153,7 @@ if (pageType === "home") {
   </head>
 
   <body>
+    <ThemeProvider />
     <div class="crop-h"></div>
     <div class="crop-v"></div>
     <div class="crop-c"></div>

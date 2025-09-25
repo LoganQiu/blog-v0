@@ -1,5 +1,6 @@
 ---
 import { SITE } from '@/config';
+import ThemeToggle from '@/components/ThemeToggle.astro';
 const currentPath = Astro.url.pathname;
 ---
 
@@ -19,10 +20,7 @@ const currentPath = Astro.url.pathname;
         <span class={currentPath === "/archives" ? "active" : ""}>
           <a href="/archives">Archives</a>
         </span>
-        <button id="theme-btn" aria-label="auto" class="flex">
-          <span class="inline dark:hidden">&olcir;</span>
-          <span class="hidden dark:inline">&ofcir;</span>
-        </button>
+        <ThemeToggle />
       </div>
     </div>
   </nav>
