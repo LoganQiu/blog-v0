@@ -3,7 +3,7 @@ title: A Plain Markdown Post
 desc: 这篇文章展示了本主题的所有功能
 slug: hello-markdown
 pubdate: 2025-02-14
-moddate: 2025-06-08
+moddate: 2025-09-24
 categories:
   - Misc 杂项
 tags:
@@ -28,6 +28,16 @@ dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
 sunt in culpa qui officia deserunt mollit anim id est laborum.[^1]
 
 [^1]: I'm sure you are bored by the text here.
+
+```ansi
+[0m [0;32m✓[0m [0;2msrc/[0mindex[0;2m.test.ts (1)[0m
+  [0;2m Test Files [0m [0;1;32m1 passed[0;98m (1)[0m
+  [0;2m      Tests [0m [0;1;32m1 passed[0;98m (1)[0m
+  [0;2m   Start at [0m 23:32:41
+  [0;2m   Duration [0m 11ms
+  [42;1;39;0m PASS [0;32m Waiting for file changes...[0m
+         [0;2mpress [0;1mh[0;2m to show help, press [0;1mq[0;2m to quit
+```
 
 List:
 
@@ -54,6 +64,36 @@ A blockquote (a gray bar at the left and lightgray background):
 > ante libero. Sed hendrerit arcu lacus.
 >
 > --- by Someone
+
+```graphviz
+graph Transparency {
+  layout=neato
+  start=11 // empiric value to set orientation
+  bgcolor="#0000ff11"
+  node [shape=circle width=2.22 label="" style=filled]
+  5 [color="#0000ff80"]
+  6 [color="#ee00ee80"]
+  1 [color="#ff000080"]
+  2 [color="#eeee0080"]
+  3 [color="#00ff0080"]
+  4 [color="#00eeee80"]
+  1 -- 2 -- 3 -- 4 -- 5 -- 6 -- 1
+}
+```
+
+```graphviz
+graph {
+  layout=patchwork
+  size=5
+  node [style=filled]
+  "$2"  [area=200 fillcolor=gold]
+  "$1"  [area=100 fillcolor=gold]
+  "50c" [area= 50 fillcolor=silver]
+  "20c" [area= 20 fillcolor=silver]
+  "10c" [area= 10 fillcolor=silver]
+  "5c"  [area=  5 fillcolor=silver]
+}
+```
 
 GitHub style alerts：
 
@@ -183,7 +223,7 @@ func GetTitleFunc(style string) func(s string) string {
 }
 ```
 
-```diff
+```diff lang="bash"
 - pnpm add -D vuepress@next
 + pnpm add -D vuepress@next @vuepress/client@next vue
 ```

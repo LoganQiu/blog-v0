@@ -256,6 +256,10 @@
   }
 
   .graphviz-figure {
-    @apply my-8;
+    @apply my-8 mx-auto block;
+    /* How to deal with background color? */
+    /* g.graph > polygon {
+      @apply fill-background;
+    } */
   }
 }
