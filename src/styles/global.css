@@ -137,17 +137,20 @@
     @apply border border-border my-4 p-4 leading-4 rounded-sm;
   }
   table {
+    @apply border-t border-b border-muted/50 border-separate border-spacing-px;
     @apply block my-6 text-sm mx-auto whitespace-nowrap overflow-x-auto max-w-fit;
-    th,
-    td {
-      @apply border border-border p-2;
+    thead th {
+      @apply border-b border-muted/50;
     }
-    code {
-      @apply text-xs break-all sm:break-normal;
+    th, td {
+      @apply p-2;
+    }
+    thead, tfoot, tbody tr:nth-child(even), code {
+      @apply bg-muted/10;
     }
   }
   img {
-    @apply mx-auto my-8 border border-border;
+    @apply mx-auto my-8 border border-muted/20;
   }
   figure {
     @apply mx-auto my-8;
