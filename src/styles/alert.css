@@ -1,9 +1,9 @@
 .markdown-alert {
-  --alert-note: #0066cc;
-  --alert-caution: #cc0000;
-  --alert-warning: #cc8800;
-  --alert-important: #8b5ec6;
-  --alert-tip: #3fb950;
+  --alert-note: var(--color-blue-400);
+  --alert-caution: var(--color-red-500);
+  --alert-warning: var(--color-orange-400);
+  --alert-important: var(--color-purple-500);
+  --alert-tip: var(--color-lime-500);
 }
 
 .markdown-alert {
@@ -27,35 +27,35 @@
 }
 
 .markdown-alert.markdown-alert-note {
-  background-color: color-mix(in srgb, var(--alert-note) 10%, transparent);
+  background-color: color-mix(in srgb, var(--alert-note) 5%, transparent);
   border-left-color: var(--alert-note);
   .markdown-alert-title {
     color: var(--alert-note);
   }
 }
 .markdown-alert.markdown-alert-tip {
-  background-color: color-mix(in srgb, var(--alert-tip) 10%, transparent);
+  background-color: color-mix(in srgb, var(--alert-tip) 5%, transparent);
   border-left-color: var(--alert-tip);
   .markdown-alert-title {
     color: var(--alert-tip);
   }
 }
 .markdown-alert.markdown-alert-important {
-  background-color: color-mix(in srgb, var(--alert-important) 10%, transparent);
+  background-color: color-mix(in srgb, var(--alert-important) 5%, transparent);
   border-left-color: var(--alert-important);
   .markdown-alert-title {
     color: var(--alert-important);
   }
 }
 .markdown-alert.markdown-alert-warning {
-  background-color: color-mix(in srgb, var(--alert-warning) 10%, transparent);
+  background-color: color-mix(in srgb, var(--alert-warning) 5%, transparent);
   border-left-color: var(--alert-warning);
   .markdown-alert-title {
     color: var(--alert-warning);
   }
 }
 .markdown-alert.markdown-alert-caution {
-  background-color: color-mix(in srgb, var(--alert-caution) 10%, transparent);
+  background-color: color-mix(in srgb, var(--alert-caution) 5%, transparent);
   border-left-color: var(--alert-caution);
   .markdown-alert-title {
     color: var(--alert-caution);
