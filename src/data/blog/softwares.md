@@ -209,6 +209,22 @@ Further help:
 - [iStat Menus](https://bjango.com/mac/istatmenus/):mac:<br>
   大版本付费制，组件样式美观，免费的可以看开源的 [Stats](https://github.com/exelban/stats)。
 
+## 密码管理器
+
+- [Bitwarden](https://bitwarden.com/):win::mac:<br>
+  开源且免费的全平台密码管理器，官方的自托管需要支付一定费用，当然也可以选择同样开源的非官方兼容版 [Vaultwarden](https://github.com/dani-garcia/vaultwarden) 来 self-hosting。
+
+- [1Password](https://1password.com/):win::mac:<br>
+  全平台密码管理器，可惜闭源且收费，不过界面更符合交互逻辑，更美观一些，经常会有一年的试用资格发放可以关注一下。
+
+## BT 下载器
+
+- [qBittorrent](https://github.com/qbittorrent/qBittorrent):win::mac:<br>
+  免费开源使用范围最广的 BT 下载器，我这里更推荐安装 [qBittorrent-Enhanced-Edition](https://github.com/c0re100/qBittorrent-Enhanced-Edition)（[为什么？](./2023/why-domestic-bt-env-so-bad)）。
+
+- [Motrix](https://github.com/agalwood/Motrix):win::mac:<br>
+  好看，不过相比于 qBittorrent 好像也只剩下好看这个优点了。
+
 ## 专业类
 
 ### Windows 类
