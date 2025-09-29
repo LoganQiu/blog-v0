@@ -130,6 +130,9 @@
   code {
     @apply bg-muted/20 p-1 text-xs font-code;
   }
+  button {
+    @apply cursor-pointer hover:text-accent hover:underline;
+  }
   pre {
     @apply border border-accent my-4 p-4 leading-4 rounded-sm;
   }

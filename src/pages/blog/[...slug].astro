@@ -60,7 +60,7 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
   ogImage={ogImageUrl}
   katex={entry.data.katex}
 >
-  <article>
+  <article data-pagefind-body>
     <h1 transition:name={`blog-title-${entry.data.slug}`}>
       {entry.data.title}
       {entry.data.subtitle && <small class="text-muted font-normal italic">{entry.data.subtitle}</small>}
