@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "./alert.css";
+@import "./crt.css";
 
 @custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
 
