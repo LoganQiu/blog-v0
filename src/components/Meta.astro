@@ -29,7 +29,7 @@ if (formattedModDate) {
 ---
 
 <div class="flex flex-col md:flex-row md:justify-between text-sm text-muted gap-1">
-  <span>{dateDisplay}</span>
+  <span data-pagefind-sort="date">{dateDisplay}</span>
   <span class="md:text-right">
     {
       categories && categories.length > 0 && (
@@ -40,6 +40,7 @@ if (formattedModDate) {
               <a
                 href={`/categories/${cat.toLowerCase().replace(/\s+/g, '-')}`}
                 class="text-muted"
+                data-pagefind-filter="categories"
               >
                 {cat}
               </a>
@@ -60,6 +61,7 @@ if (formattedModDate) {
               <a
                 href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
                 class="text-muted"
+                data-pagefind-filter="tags"
               >
                 {tag}
               </a>
