@@ -28,3 +28,6 @@ public/d2/
 
 # pagefind
 public/pagefind
+
+# claude
+.claude/

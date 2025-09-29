@@ -1,9 +1,9 @@
 .markdown-alert {
-  --alert-note: var(--color-blue-400);
-  --alert-caution: var(--color-red-500);
-  --alert-warning: var(--color-orange-400);
-  --alert-important: var(--color-purple-500);
   --alert-tip: var(--color-lime-500);
+  --alert-note: var(--color-blue-400);
+  --alert-important: var(--color-purple-500);
+  --alert-warning: var(--color-orange-400);
+  --alert-caution: var(--color-red-500);
 }
 
 .markdown-alert {
