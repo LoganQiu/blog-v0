@@ -1,7 +1,7 @@
 ---
 import { SITE } from "@/config";
 import ThemeToggle from "@/components/ThemeToggle.astro";
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/+$/, "") || "/";
 ---
 
 <header class="max-w-app mx-auto px-4 pt-4 w-full">
