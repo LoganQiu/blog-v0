@@ -3,10 +3,12 @@ import sitemap from "@astrojs/sitemap";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import remarkMath from "remark-math";
-import rehypeKatex from "rehype-katex";
 import remarkGithubAlert from "./src/plugins/remark-github-alert.mjs";
 import remarkPlatformIcon from "./src/plugins/remark-platform-icon.mjs";
 import remarkGraphviz from './src/plugins/remark-graphviz.mjs';
+import rehypeRaw from 'rehype-raw';
+import rehypeKatex from "rehype-katex";
+import rehypeTypst from "./src/plugins/rehype-typst.mjs";
 import d2 from "astro-d2";
 import { SITE } from "./src/config";
 
@@ -48,14 +50,19 @@ export default defineConfig({
     //   wrap: false,
     //   defaultColor: false,
     // },
+    remarkRehype: { allowDangerousHtml: true },
     remarkPlugins: [remarkMath, remarkGithubAlert, remarkPlatformIcon, remarkGraphviz],
-    rehypePlugins: [rehypeKatex],
+    rehypePlugins: [rehypeTypst, rehypeKatex, rehypeRaw],
   },
 
   output: "static",
 
   vite: {
     plugins: [tailwindcss()],
+    ssr: {
+      // 避免被打包器错误处理
+      external: ['@myriaddreamin/typst-ts-node-compiler'],
+    },
   },
 
   experimental: {
