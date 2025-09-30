@@ -1,5 +1,6 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
+import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import remarkMath from "remark-math";
@@ -15,31 +16,27 @@ import { SITE } from "./src/config";
 export default defineConfig({
   site: SITE.website,
 
-  integrations: [
-    sitemap(),
-    d2({
-      layout: "elk",
-    }),
-    expressiveCode({
-      themes: ['catppuccin-mocha', 'catppuccin-latte'],
-      themeCssSelector: (theme) => {
-        if (theme.name === 'catppuccin-latte') return "[data-theme='light']";
-        if (theme.name === 'catppuccin-mocha') return "[data-theme='dark']";
-        return ':root';
+  integrations: [sitemap(), d2({
+    layout: "elk",
+  }), expressiveCode({
+    themes: ['catppuccin-mocha', 'catppuccin-latte'],
+    themeCssSelector: (theme) => {
+      if (theme.name === 'catppuccin-latte') return "[data-theme='light']";
+      if (theme.name === 'catppuccin-mocha') return "[data-theme='dark']";
+      return ':root';
+    },
+    wrap: false,
+    styleOverrides: {
+      borderColor: "color-mix(in srgb, var(--muted) 20%, transparent)",
+      borderRadius: '0',
+      codeFontFamily: "var(--font-code)",
+      codeFontSize: "0.75rem",
+      codePaddingInline: "1.5rem",
+      frames: {
+        frameBoxShadowCssValue: false,
       },
-      wrap: false,
-      styleOverrides: {
-        borderColor: "color-mix(in srgb, var(--muted) 20%, transparent)",
-        borderRadius: '0',
-        codeFontFamily: "var(--font-code)",
-        codeFontSize: "0.75rem",
-        codePaddingInline: "1.5rem",
-        frames: {
-          frameBoxShadowCssValue: false,
-        },
-      },
-    })
-  ],
+    },
+  }), react()],
 
   markdown: {
     // shikiConfig: {

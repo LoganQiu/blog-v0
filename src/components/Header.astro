@@ -20,6 +20,9 @@ const currentPath = Astro.url.pathname;
         <span class={currentPath === "/archives" ? "active" : ""}>
           <a href="/archives">Archives</a>
         </span>
+        <span class={currentPath === "/memos" ? "active" : ""}>
+          <a href="/memos">Memos</a>
+        </span>
         <button type="button" aria-label="auto" class="flex">
           <a href="/search" aria-Label="search" title="Search">
             <span class="inline-block -rotate-45 text-xl">&#x26B2;</span>
