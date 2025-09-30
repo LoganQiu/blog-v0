@@ -198,9 +198,6 @@
   .max-w-app {
     @apply max-w-4xl;
   }
-  .active {
-    @apply border-b-[5px] -mb-[5px];
-  }
   .expressive-code {
     @apply my-4;
   }

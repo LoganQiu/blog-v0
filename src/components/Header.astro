@@ -11,16 +11,16 @@ const currentPath = Astro.url.pathname;
         <a href="/">{SITE.title}</a>
       </div>
       <div class="flex gap-4">
-        <span class={currentPath === "/about" ? "active" : ""}>
+        <span class={currentPath === "/about" ? "border-b-[5px] -mb-[5px]" : ""}>
           <a href="/about">About</a>
         </span>
-        <span class={currentPath.startsWith("/blog") ? "active" : ""}>
+        <span class={currentPath.startsWith("/blog") ? "border-b-[5px] -mb-[5px]" : ""}>
           <a href="/blog">Blog</a>
         </span>
-        <span class={currentPath === "/archives" ? "active" : ""}>
+        <span class={currentPath === "/archives" ? "border-b-[5px] -mb-[5px]" : ""}>
           <a href="/archives">Archives</a>
         </span>
-        <span class={currentPath === "/memos" ? "active" : ""}>
+        <span class={currentPath === "/memos" ? "border-b-[5px] -mb-[5px]" : ""}>
           <a href="/memos">Memos</a>
         </span>
         <button type="button" aria-label="auto" class="flex">

@@ -29,5 +29,8 @@ public/d2/
 # pagefind
 public/pagefind
 
+# memos data file
+public/memos.json
+
 # claude
 .claude/
