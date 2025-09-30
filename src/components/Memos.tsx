@@ -60,7 +60,9 @@ export default function Memos(props: {
     const url = `${apiBase}/api/memos?page=${p}&limit=${limit}`;
     const r = await fetch(url, { headers: { accept: "application/json" } });
     if (!r.ok) throw new Error(`Fetch ${url} ${r.status}`);
-    const list = (await r.json()) as Memo[];
+    const response = await r.json();
+    // API返回的是 { data: [...], total, hasMore }，需要提取data数组
+    const list = (response.data || []) as Memo[];
     return list;
   };
 

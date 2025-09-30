@@ -15,10 +15,12 @@ if (!res.ok) {
   console.error(`[prefetch-memos] Fetch failed: ${res.status} ${res.statusText}`);
   process.exit(1);
 }
-const list = await res.json();
+const response = await res.json();
+// API返回的是 { data: [...], total, hasMore }，需要提取data数组
+const list = response.data || [];
 
 // 写入静态文件
 const out = "public/memos.json";
 await mkdir(dirname(out), { recursive: true });
 await writeFile(out, JSON.stringify(list, null, 2), "utf-8");
-console.log(`[prefetch-memos] Wrote ${out} with ${Array.isArray(list) ? list.length : 0} items`);
+console.log(`[prefetch-memos] Wrote ${out} with ${list.length} items`);
