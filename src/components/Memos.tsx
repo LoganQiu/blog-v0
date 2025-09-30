@@ -76,9 +76,9 @@ export default function Memos(props: {
       {rendered.map((m) => (
         <article
           key={m.uid}
-          className="border-b border-muted/40"
+          className="border-b border-muted/40 pb-2"
         >
-          <time className="block text-xs text-muted">
+          <time className="block text-xs text-muted mb-2">
             {new Date(m.createTime).toLocaleString()}
           </time>
           <div
