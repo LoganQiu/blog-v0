@@ -52,7 +52,7 @@ export default defineConfig({
     // },
     remarkRehype: { allowDangerousHtml: true },
     remarkPlugins: [remarkMath, remarkGithubAlert, remarkPlatformIcon, remarkGraphviz],
-    rehypePlugins: [rehypeTypst, rehypeKatex, rehypeRaw],
+    rehypePlugins: [rehypeKatex, rehypeRaw, rehypeTypst],
   },
 
   output: "static",
