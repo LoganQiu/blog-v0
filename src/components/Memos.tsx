@@ -28,36 +28,16 @@ export default function Memos(props: {
   const [loading, setLoading] = useState(false);
   const firstLoadDoneRef = useRef(false);
 
-  // 与原逻辑一致：先尝试读取 /memos.json（编译期产物，前 10 条）
+  // 直接从 API 获取最新数据，跳过静态文件
   useEffect(() => {
-    let cancelled = false;
-    (async () => {
-      try {
-        const r = await fetch("/memos.json", { cache: "no-cache" });
-        if (cancelled) return;
-        if (r.ok) {
-          const list = (await r.json()) as Memo[];
-          if (Array.isArray(list) && list.length) {
-            setMemos(list);
-            firstLoadDoneRef.current = true;
-            return;
-          }
-        }
-        // 如果没有 memos.json 或为空，再回退到线上 API 的第一页
-        await loadPage(1);
-      } catch {
-        await loadPage(1);
-      }
-    })();
-    return () => {
-      cancelled = true;
-    };
+    loadPage(1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // 抽出来的页加载器：与后端对齐 page/limit
+  // 抽出来的页加载器：与后端对齐 offset/limit
   const fetchPage: Fetcher = async (p, limit) => {
-    const url = `${apiBase}/api/memos?page=${p}&limit=${limit}`;
+    const offset = (p - 1) * limit;  // 页码转换为偏移量
+    const url = `${apiBase}/api/memos?offset=${offset}&limit=${limit}`;
     const r = await fetch(url, { headers: { accept: "application/json" } });
     if (!r.ok) throw new Error(`Fetch ${url} ${r.status}`);
     const response = await r.json();
@@ -96,13 +76,12 @@ export default function Memos(props: {
       {rendered.map((m) => (
         <article
           key={m.uid}
-          className="rounded-lg border border-muted/40 bg-background/60 shadow-sm p-4"
+          className="border-b border-muted/40"
         >
-          <time className="block text-xs text-muted mb-2">
+          <time className="block text-xs text-muted">
             {new Date(m.createTime).toLocaleString()}
           </time>
           <div
-            className="prose prose-sm dark:prose-invert max-w-none"
             dangerouslySetInnerHTML={{ __html: m.__html }}
           />
         </article>
@@ -113,7 +92,7 @@ export default function Memos(props: {
           type="button"
           onClick={() => loadPage(page + 1)}
           disabled={loading}
-          className="px-3 py-2 rounded-md bg-accent text-white text-sm hover:opacity-90 disabled:opacity-50"
+          className="px-3 py-2 rounded-md border disabled:opacity-50"
         >
           {loading ? "加载中…" : "加载更多"}
         </button>

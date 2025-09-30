@@ -4,9 +4,8 @@ import Memo from "@/components/Memos";
 ---
 
 <BaseLayout pageType="single">
-<section class="my-8">
-  <h1 class="text-xl font-semibold mb-4">碎碎念</h1>
-  <!-- 同域反代：直接用默认 props；若 API 不同域，可传 apiBase="https://your-worker.example.com" -->
-  <Memo client:load />
-</section>
+  <section class="my-8">
+    <h1>碎碎念</h1>
+    <Memo client:load />
+  </section>
 </BaseLayout>

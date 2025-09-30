@@ -7,8 +7,8 @@ import process from "node:process";
 
 const API_ORIGIN = process.env.MEMOS_API_ORIGIN || "https://memos.zeratulqiu.me";
 
-// 约定与后端一致：page=1, limit=10
-const url = `${API_ORIGIN}/api/memos?page=1&limit=10`;
+// 约定与后端一致：offset=0, limit=10
+const url = `${API_ORIGIN}/api/memos?offset=0&limit=10`;
 
 const res = await fetch(url, { headers: { "accept": "application/json" } });
 if (!res.ok) {
