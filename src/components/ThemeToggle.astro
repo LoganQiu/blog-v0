@@ -28,7 +28,7 @@
         document.dispatchEvent(
           new CustomEvent("theme-change", {
             detail: { theme: nextTheme },
-          }),
+          })
         );
         requestAnimationFrame(syncState);
       };

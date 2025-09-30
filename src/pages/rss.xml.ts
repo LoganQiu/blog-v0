@@ -11,7 +11,6 @@ export async function GET(context: APIContext) {
     const dateB = b.data.moddate || b.data.pubdate;
     return dateB.valueOf() - dateA.valueOf();
   });
-  
   return rss({
     title: SITE.title,
     description: SITE.desc,

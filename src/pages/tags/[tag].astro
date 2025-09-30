@@ -1,15 +1,15 @@
 ---
-import { getCollection } from 'astro:content';
-import ListLayout from '@/layouts/ListLayout.astro';
-import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from "astro:content";
+import ListLayout from "@/layouts/ListLayout.astro";
+import BlogCard from "@/components/BlogCard.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   const tags = new Map<string, typeof posts>();
 
-  posts.forEach(post => {
-    post.data.tags?.forEach(tag => {
-      const slug = tag.toLowerCase().replace(/\s+/g, '-');
+  posts.forEach((post) => {
+    post.data.tags?.forEach((tag) => {
+      const slug = tag.toLowerCase().replace(/\s+/g, "-");
       if (!tags.has(slug)) {
         tags.set(slug, []);
       }
@@ -18,13 +18,11 @@ export async function getStaticPaths() {
   });
 
   return Array.from(tags.entries()).map(([slug, posts]) => {
-    const displayName = posts[0]?.data.tags?.find(t =>
-      t.toLowerCase().replace(/\s+/g, '-') === slug
-    ) || slug;
+    const displayName = posts[0]?.data.tags?.find((t) => t.toLowerCase().replace(/\s+/g, "-") === slug) || slug;
 
     return {
       params: { tag: slug },
-      props: { posts, displayName }
+      props: { posts, displayName },
     };
   });
 }
@@ -39,7 +37,5 @@ const sortedPosts = posts.sort((a: any, b: any) => {
 
 <ListLayout title={`Tag: ${displayName}`}>
   <h1>{displayName}<span class="text-base"> | <a href="/tags/">tags</a></span></h1>
-    {sortedPosts.map((post: any) => (
-      <BlogCard post={post} />
-    ))}
+  {sortedPosts.map((post: any) => <BlogCard post={post} />)}
 </ListLayout>

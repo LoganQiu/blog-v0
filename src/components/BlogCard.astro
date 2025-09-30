@@ -12,13 +12,7 @@ const postPath = getPostPath(post);
 ---
 
 <div class="relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground transition duration-400">
-  {
-    post.data.pin && post.data.pin > 0 && (
-      <span class="absolute top-0 right-0 pt-1 pr-2 text-sm text-accent">
-        PIN
-      </span>
-    )
-  }
+  {post.data.pin && post.data.pin > 0 && <span class="absolute top-0 right-0 pt-1 pr-2 text-sm text-accent">PIN</span>}
   <h2 class="text-xl font-semibold mt-0 border-0 mb-2" transition:name={`blog-title-${post.data.slug}`}>
     <a href={postPath}>{post.data.title}</a>
     {post.data.subtitle && <small class="text-muted font-normal italic">{post.data.subtitle}</small>}
@@ -31,4 +25,5 @@ const postPath = getPostPath(post);
     tags={post.data.tags}
   />
   {post.data.desc && <p class="mb-0">{post.data.desc}</p>}
-<div/>
+  <div></div>
+</div>

@@ -13,23 +13,17 @@ export interface Props {
 const { prev, next } = Astro.props;
 ---
 
-{(prev || next) && (
-  <nav class="flex justify-between items-center my-8 px-4 py-1 border-x text-sm font-kai">
-    <span class="text-muted">
-      &larr;&nbsp;
-      {prev ? (
-          <a href={prev.url}>{prev.title}</a>
-      ) : (
-        <>&empty;</>
-      )}
-    </span>
-    <span class="text-muted">
-      {next ? (
-          <a href={next.url}>{next.title}</a>
-      ) : (
-        <>&empty;</>
-      )}
-      &nbsp;&rarr;
-    </span>
-  </nav>
-)}
+{
+  (prev || next) && (
+    <nav class="flex justify-between items-center my-8 px-4 py-1 border-x text-sm font-kai">
+      <span class="text-muted">
+        &larr;&nbsp;
+        {prev ? <a href={prev.url}>{prev.title}</a> : <>&empty;</>}
+      </span>
+      <span class="text-muted">
+        {next ? <a href={next.url}>{next.title}</a> : <>&empty;</>}
+        &nbsp;&rarr;
+      </span>
+    </nav>
+  )
+}

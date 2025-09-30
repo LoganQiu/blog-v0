@@ -1,74 +1,65 @@
-<div
-  id="btt-btn-container"
-  class="fixed end-6 bottom-8 z-50 translate-y-14 opacity-0 transition duration-500"
->
-  <button
-    id="back-to-top"
-    class="group relative bg-background size-14 rounded-full shadow-xl cursor-pointer"
-  >
-    <span
-      id="progress-ring"
-      class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent"
-    ></span>
+<div id="btt-btn-container" class="fixed end-6 bottom-8 z-50 translate-y-14 opacity-0 transition duration-500">
+  <button id="back-to-top" class="group relative bg-background size-14 rounded-full shadow-xl cursor-pointer">
+    <span id="progress-ring" class="absolute inset-0 -z-10 block size-14 scale-110 rounded-full bg-transparent"></span>
     <span class="inline-block text-lg">&uarr;</span>
     <span class="sr-only">Back To Top</span>
   </button>
 </div>
 
 <script is:inline data-astro-rerun>
-function initBackToTop() {
-  const btnContainer = document.getElementById('btt-btn-container');
-  const btn = document.getElementById('back-to-top');
-  const progressRing = document.getElementById('progress-ring');
+  function initBackToTop() {
+    const btnContainer = document.getElementById("btt-btn-container");
+    const btn = document.getElementById("back-to-top");
+    const progressRing = document.getElementById("progress-ring");
 
-  if (!btnContainer || !btn || !progressRing) return;
+    if (!btnContainer || !btn || !progressRing) return;
 
-  // 点击回到顶部
-  btn.addEventListener('click', () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  });
+    // 点击回到顶部
+    btn.addEventListener("click", () => {
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+    });
 
-  // 滚动处理
-  let lastVisible = null;
-  function handleScroll() {
-    if (!btnContainer || !progressRing) return;
+    // 滚动处理
+    let lastVisible = null;
+    function handleScroll() {
+      if (!btnContainer || !progressRing) return;
 
-    const rootElement = document.documentElement;
-    const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
-    const scrollTop = rootElement.scrollTop;
-    const scrollPercent = Math.min(100, Math.round((scrollTop / scrollTotal) * 100));
+      const rootElement = document.documentElement;
+      const scrollTotal = rootElement.scrollHeight - rootElement.clientHeight;
+      const scrollTop = rootElement.scrollTop;
+      const scrollPercent = Math.min(100, Math.round((scrollTop / scrollTotal) * 100));
 
-    // 更新进度环
-    progressRing.style.setProperty(
-      "background-image",
-      `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
-    );
+      // 更新进度环
+      progressRing.style.setProperty(
+        "background-image",
+        `conic-gradient(var(--accent), var(--accent) ${scrollPercent}%, transparent ${scrollPercent}%)`
+      );
 
-    // 显示/隐藏按钮
-    const isVisible = scrollTop / scrollTotal > 0.2;
+      // 显示/隐藏按钮
+      const isVisible = scrollTop / scrollTotal > 0.2;
 
-    if (isVisible !== lastVisible) {
-      btnContainer.classList.toggle("opacity-100", isVisible);
-      btnContainer.classList.toggle("translate-y-0", isVisible);
-      btnContainer.classList.toggle("opacity-0", !isVisible);
-      btnContainer.classList.toggle("translate-y-14", !isVisible);
-      lastVisible = isVisible;
+      if (isVisible !== lastVisible) {
+        btnContainer.classList.toggle("opacity-100", isVisible);
+        btnContainer.classList.toggle("translate-y-0", isVisible);
+        btnContainer.classList.toggle("opacity-0", !isVisible);
+        btnContainer.classList.toggle("translate-y-14", !isVisible);
+        lastVisible = isVisible;
+      }
     }
+
+    // 节流滚动事件
+    let ticking = false;
+    document.addEventListener("scroll", () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    });
   }
 
-  // 节流滚动事件
-  let ticking = false;
-  document.addEventListener('scroll', () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        handleScroll();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
-}
-
-initBackToTop();
+  initBackToTop();
 </script>

@@ -14,16 +14,12 @@
     }
 
     const bgColor = window.getComputedStyle(body).backgroundColor;
-    document
-      .querySelector("meta[name='theme-color']")
-      ?.setAttribute("content", bgColor ?? "");
+    document.querySelector("meta[name='theme-color']")?.setAttribute("content", bgColor ?? "");
   }
 
   function setTheme(newTheme) {
     if (newTheme !== "light" && newTheme !== "dark") {
-      console.warn(
-        `Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`,
-      );
+      console.warn(`Invalid theme value '${newTheme}' received. Expected 'light' or 'dark'.`);
       return;
     }
 
@@ -63,16 +59,12 @@
   });
 
   document.addEventListener("astro:before-swap", (event) => {
-    const currentThemeColor = document
-      .querySelector("meta[name='theme-color']")
-      ?.getAttribute("content");
+    const currentThemeColor = document.querySelector("meta[name='theme-color']")?.getAttribute("content");
 
     if (!currentThemeColor) {
       return;
     }
 
-    event.newDocument
-      .querySelector("meta[name='theme-color']")
-      ?.setAttribute("content", currentThemeColor);
+    event.newDocument.querySelector("meta[name='theme-color']")?.setAttribute("content", currentThemeColor);
   });
 </script>

@@ -1,17 +1,17 @@
-import { visit } from 'unist-util-visit';
-import { instance } from '@viz-js/viz';
+import { visit } from "unist-util-visit";
+import { instance } from "@viz-js/viz";
 
 export default function remarkGraphviz() {
   return async (tree) => {
     const viz = await instance();
     const promises = [];
 
-    visit(tree, 'code', (node) => {
-      if (node.lang === 'graphviz' || node.lang === 'dot') {
+    visit(tree, "code", (node) => {
+      if (node.lang === "graphviz" || node.lang === "dot") {
         promises.push(
           (async () => {
-            const svg = await viz.renderString(node.value, { format: 'svg' });
-            node.type = 'html';
+            const svg = await viz.renderString(node.value, { format: "svg" });
+            node.type = "html";
             node.value = makeResponsive(svg);
             delete node.lang;
             delete node.meta;
@@ -33,9 +33,7 @@ function makeResponsive(svg) {
     const widthValue = widthMatch?.[1];
     const heightValue = heightMatch?.[1];
 
-    let newAttrs = attrs
-      .replace(/\swidth="[^"]*"/gi, '')
-      .replace(/\sheight="[^"]*"/gi, '');
+    let newAttrs = attrs.replace(/\swidth="[^"]*"/gi, "").replace(/\sheight="[^"]*"/gi, "");
 
     if (/\sclass="/i.test(newAttrs)) {
       newAttrs = newAttrs.replace(/\sclass="([^"]*)"/i, (_, classes) => ` class="${classes} graphviz-figure"`);
@@ -43,7 +41,7 @@ function makeResponsive(svg) {
       newAttrs += ' class="graphviz-figure"';
     }
 
-    const desiredWidth = widthValue ? `min(100%, ${widthValue})` : '100%';
+    const desiredWidth = widthValue ? `min(100%, ${widthValue})` : "100%";
     const responsiveStyle = `width:${desiredWidth};height:auto;display:block;`;
 
     if (/\sstyle="/i.test(newAttrs)) {

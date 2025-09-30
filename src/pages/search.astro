@@ -4,19 +4,18 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 ---
 
 <BaseLayout pageType="single">
-    <div id="pagefind-search" transition:persist></div>
+  <div id="pagefind-search" transition:persist></div>
 </BaseLayout>
 
 <script>
   function initSearch() {
-    const pageFindSearch: HTMLElement | null =
-      document.querySelector("#pagefind-search");
+    const pageFindSearch: HTMLElement | null = document.querySelector("#pagefind-search");
 
     if (!pageFindSearch) return;
 
     const params = new URLSearchParams(window.location.search);
 
-    const onIdle = window.requestIdleCallback || (cb => setTimeout(cb, 1));
+    const onIdle = window.requestIdleCallback || ((cb) => setTimeout(cb, 1));
 
     onIdle(async () => {
       // @ts-expect-error — Missing types for @pagefind/default-ui package.

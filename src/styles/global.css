@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
-  --font-article: var(--font-Libertinus),"KingHwaOldSong", "SimSun", "Songti SC", serif;
+  --font-article: var(--font-Libertinus), "KingHwaOldSong", "SimSun", "Songti SC", serif;
   --font-decoration: var(--font-Jost), sans-serif;
   --font-kai: "ChillKai", "SimKai", "KaiTi", "STKaiti", "Kaiti SC", Georgia, serif;
   --font-code: "Monaco", "Consolas", "Courier New", monospace;
@@ -143,10 +143,14 @@
     thead th {
       @apply border-b border-muted/50;
     }
-    th, td {
+    th,
+    td {
       @apply p-2;
     }
-    thead, tfoot, tbody tr:nth-child(even), code {
+    thead,
+    tfoot,
+    tbody tr:nth-child(even),
+    code {
       @apply bg-muted/10;
     }
   }
@@ -235,15 +239,13 @@
   }
 
   .art {
-    @apply 
-      text-transparent 
+    @apply text-transparent 
       transition-all duration-200 ease-linear
       -translate-x-1 -translate-y-1
       [text-shadow:-2px_-2px_0_#6bb6ff,0_0_0_#51cf66,2px_2px_0_#ffd93d,4px_4px_0_#ff6b6b,6px_6px_0_#845ec2];
   }
   .art:hover {
-    @apply 
-      translate-x-0 translate-y-0
+    @apply translate-x-0 translate-y-0
       [text-shadow:-1px_-1px_0_#6bb6ff,0_0_0_#51cf66,1px_1px_0_#ffd93d,2px_2px_0_#ff6b6b,3px_3px_0_#845ec2];
   }
 

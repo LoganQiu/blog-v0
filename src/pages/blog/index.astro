@@ -1,9 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import ListLayout from '@/layouts/ListLayout.astro';
-import BlogCard from '@/components/BlogCard.astro';
+import { getCollection } from "astro:content";
+import ListLayout from "@/layouts/ListLayout.astro";
+import BlogCard from "@/components/BlogCard.astro";
 
-const posts = await getCollection('blog', ({ data }) => {
+const posts = await getCollection("blog", ({ data }) => {
   return !data.draft;
 });
 
@@ -14,7 +14,7 @@ const sortedPosts = posts.sort((a, b) => {
   if (pinA !== pinB) {
     return pinB - pinA;
   }
-  
+
   // pin 相同时，按日期降序排序
   const dateA = a.data.moddate || a.data.pubdate;
   const dateB = b.data.moddate || b.data.pubdate;
@@ -25,8 +25,6 @@ const sortedPosts = posts.sort((a, b) => {
 <ListLayout title="Blog">
   <h1>Blog</h1>
   <div class="space-y-4">
-    {sortedPosts.map((post) => (
-      <BlogCard post={post} />
-    ))}
+    {sortedPosts.map((post) => <BlogCard post={post} />)}
   </div>
 </ListLayout>

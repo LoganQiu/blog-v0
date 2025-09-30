@@ -19,7 +19,7 @@ const formattedPubDate = formatDate(pubdate);
 const formattedModDate = formatDate(moddate);
 
 // 构建日期显示字符串
-let dateDisplay = '';
+let dateDisplay = "";
 if (formattedPubDate) {
   dateDisplay = `pub: ${formattedPubDate}`;
 }
@@ -38,7 +38,7 @@ if (formattedModDate) {
           {categories.map((cat, index) => (
             <>
               <a
-                href={`/categories/${cat.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`/categories/${cat.toLowerCase().replace(/\s+/g, "-")}`}
                 class="text-muted"
                 data-pagefind-filter="categories"
               >
@@ -59,7 +59,7 @@ if (formattedModDate) {
           {tags.map((tag, index) => (
             <>
               <a
-                href={`/tags/${tag.toLowerCase().replace(/\s+/g, '-')}`}
+                href={`/tags/${tag.toLowerCase().replace(/\s+/g, "-")}`}
                 class="text-muted"
                 data-pagefind-filter="tags"
               >
