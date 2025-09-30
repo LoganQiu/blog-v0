@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "prebuild": "node ./scripts/prefetch-memos.mjs",
+    "prebuild": "node ./src/scripts/prefetch-memos.mjs",
     "build": "astro build && pagefind --site dist && cp -r dist/pagefind public/",
     "preview": "astro preview",
     "astro": "astro"
