@@ -19,7 +19,7 @@ tags:
 
 ## 后端
 
-基本复刻上面博客中的部分，防止原文消失，这边做了一个备份：[vitepress-memos-component-test](/public/vitepress-memos-component.txt)/[vitepress-memos-component](/public/raw-viewer.html?file=/vitepress-memos-component.txt)
+基本复刻上面博客中的部分，防止原文消失，这边做了一个备份：[vitepress-memos-component-test](/vitepress-memos-component.txt)/[vitepress-memos-component](/raw-viewer.html?file=/vitepress-memos-component.txt)
 
 ## 前端
 
