@@ -1,4 +1,5 @@
 import { visit } from "unist-util-visit";
+import { fromHtml } from "hast-util-from-html";
 
 // CJS 包：默认导入再解构
 import nodeCompilerMod from "@myriaddreamin/typst-ts-node-compiler";
@@ -62,7 +63,7 @@ export default function rehypeTypst(options = {}) {
     if (!tree || typeof tree !== "object" || !("type" in tree)) return;
 
     const compiler = await compilerP;
-    const jobs = [];
+    const replacements = [];
 
     visit(tree, "element", (node, index, parent) => {
       if (!parent || node.tagName !== "pre") return;
@@ -79,35 +80,54 @@ export default function rehypeTypst(options = {}) {
         .map((c) => c.value)
         .join("");
 
-      jobs.push(
-        (async () => {
-          const key = `${target}:${rawText}`;
-          let html = cache.get(key);
-
-          if (!html) {
-            try {
-              html =
-                target === "html"
-                  ? await compiler.plainHtml({ mainFileContent: rawText })
-                  : await compiler.plainSvg({ mainFileContent: rawText }); // 返回 <svg>…</svg>
-              cache.set(key, html);
-            } catch (e) {
-              // 编译失败时：回退为原始 <pre>（不影响整篇文档渲染）
-              return;
-            }
-          }
-
-          // 对 SVG 输出应用响应式处理
-          if (target === "svg") {
-            html = makeResponsive(html);
-          }
-
-          // 用 raw HTML 节点替换整个 <pre>（交给 rehype-raw 解析）
-          parent.children[index] = { type: "raw", value: html };
-        })()
-      );
+      replacements.push({ parent, index, rawText });
     });
 
-    await Promise.all(jobs);
+    if (!replacements.length) return;
+
+    await Promise.all(
+      replacements.map(async (entry) => {
+        const { parent, index, rawText } = entry;
+        const key = `${target}:${rawText}`;
+        let html = cache.get(key);
+
+        if (!html) {
+          try {
+            html =
+              target === "html"
+                ? await compiler.plainHtml({ mainFileContent: rawText })
+                : await compiler.plainSvg({ mainFileContent: rawText });
+            cache.set(key, html);
+          } catch (_error) {
+            return;
+          }
+        }
+
+        if (target === "svg") {
+          html = makeResponsive(html);
+        }
+
+        const fragment = fromHtml(html, { fragment: true });
+        const nodes = fragment.type === "root" ? fragment.children ?? [] : [];
+        if (!nodes.length) return;
+
+        entry.nodes = nodes;
+      })
+    );
+
+    const grouped = new Map();
+    for (const entry of replacements) {
+      if (!entry.nodes?.length) continue;
+      if (!grouped.has(entry.parent)) grouped.set(entry.parent, []);
+      grouped.get(entry.parent).push(entry);
+    }
+
+    for (const [parent, entries] of grouped.entries()) {
+      entries
+        .sort((a, b) => b.index - a.index)
+        .forEach(({ index, nodes }) => {
+          parent.children.splice(index, 1, ...nodes);
+        });
+    }
   };
 }

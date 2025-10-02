@@ -7,7 +7,6 @@ import remarkMath from "remark-math";
 import remarkGithubAlert from "./src/plugins/remark-github-alert.mjs";
 import remarkPlatformIcon from "./src/plugins/remark-platform-icon.mjs";
 import remarkGraphviz from './src/plugins/remark-graphviz.mjs';
-import rehypeRaw from 'rehype-raw';
 import rehypeKatex from "rehype-katex";
 import rehypeTypst from "./src/plugins/rehype-typst.mjs";
 import d2 from "astro-d2";
@@ -49,7 +48,7 @@ export default defineConfig({
     // },
     remarkRehype: { allowDangerousHtml: true },
     remarkPlugins: [remarkMath, remarkGithubAlert, remarkPlatformIcon, remarkGraphviz],
-    rehypePlugins: [rehypeKatex, rehypeRaw, rehypeTypst],
+    rehypePlugins: [rehypeKatex, rehypeTypst],
   },
 
   output: "static",
