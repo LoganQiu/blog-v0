@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raw Viewer</title>
+</head>
+<body>
+    <pre id="content">loading...</pre>
+    <script>
+        // 从 URL 参数获取文件路径
+        const params = new URLSearchParams(window.location.search);
+        const file = params.get('file');
+
+        if (file) {
+            fetch(file)
+                .then(response => response.text())
+                .then(text => {
+                    document.getElementById('content').textContent = text;
+                })
+                .catch(err => {
+                    document.getElementById('content').textContent = '加载失败: ' + err.message;
+                });
+        } else {
+            document.getElementById('content').textContent = '未指定文件';
+        }
+    </script>
+</body>
+</html>
