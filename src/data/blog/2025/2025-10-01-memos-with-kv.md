@@ -153,3 +153,48 @@ import Memo from "@/components/Memos";
 <Memo client:load />
 
 ```
+
+为了提升加载速度，以及减少对 KV 的直接读的次数，原作者把前十条拉到本地 `memos.json` 直接加载，这就需要加一个脚本在构建博客前先执行拉取动作。
+
+```js title="./src/scripts/prefetch-memos.mjs"
+// 构建前跑：从你的 Worker API 拉 “第 1 页 / 前 10 条” 写到 public/memos.json
+// 逻辑与原文一致：首屏不打 Worker，直接读这个静态文件。
+
+import { writeFile, mkdir } from "node:fs/promises";
+import { dirname } from "node:path";
+import process from "node:process";
+
+const API_ORIGIN = process.env.MEMOS_API_ORIGIN || "你的 memos 部署 url";
+
+// 约定与后端一致：offset=0, limit=10
+const url = `${API_ORIGIN}/api/memos?offset=0&limit=10`;
+
+const res = await fetch(url, { headers: { "accept": "application/json" } });
+if (!res.ok) {
+  console.error(`[prefetch-memos] Fetch failed: ${res.status} ${res.statusText}`);
+  process.exit(1);
+}
+const response = await res.json();
+// API返回的是 { data: [...], total, hasMore }，需要提取data数组
+const list = response.data || [];
+
+// 写入静态文件
+const out = "public/memos.json";
+await mkdir(dirname(out), { recursive: true });
+await writeFile(out, JSON.stringify(list, null, 2), "utf-8");
+console.log(`[prefetch-memos] Wrote ${out} with ${list.length} items`);
+```
+
+再修改 `package.json`：
+
+```json ins={3}
+"scripts": {
+  "dev": "astro dev",
+  "prebuild": "node ./src/scripts/prefetch-memos.mjs",
+  "build": "astro build",
+  "preview": "astro preview",
+  "astro": "astro"
+},
+```
+
+还是有点麻烦的，为了省个 VPS 钱，值不值呢？
