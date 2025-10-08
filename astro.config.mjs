@@ -1,6 +1,5 @@
 import { defineConfig, fontProviders } from "astro/config";
 import sitemap from "@astrojs/sitemap";
-import react from "@astrojs/react";
 import tailwindcss from "@tailwindcss/vite";
 import expressiveCode from "astro-expressive-code";
 import remarkMath from "remark-math";
@@ -35,7 +34,7 @@ export default defineConfig({
         frameBoxShadowCssValue: false,
       },
     },
-  }), react()],
+  })],
 
   markdown: {
     // shikiConfig: {
