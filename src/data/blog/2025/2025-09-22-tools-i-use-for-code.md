@@ -18,7 +18,7 @@ tags:
 
 由于写注释时可能使用中文，曾经有强迫症的我一直在找中英文字宽完美 2:1 的字体。[更纱黑体](https://github.com/be5invis/Sarasa-Gothic) 是第一款我找到符合要求的字体，效果可以在 [这里](https://picaq.github.io/sarasa/) 查看，它结合了拉丁字母部分的 Iosevka 以及 CJK 部分的 Source Han Sans 并在字重、字宽等方面做了精心匹配，使混排较为美观。但使用一阵后感觉英文字母过于细窄，长时间注视容易感到疲劳，遂放弃。
 
-后来找到令了人惊艳的 [Maple Mono](https://github.com/subframe7536/maple-font)。顶级优秀的制作，丰富特性支持，依然完美的中英文 2:1 等宽，多少溢美之词都不为过，详细内容可以在其官网：<https://font.subf.dev/zh-cn/> 查看。（于我个人而言唯一的缺点就是过于圆润）
+后来找到了令人惊艳的 [Maple Mono](https://github.com/subframe7536/maple-font)。顶级优秀的制作，丰富特性支持，依然完美的中英文 2:1 等宽，多少溢美之词都不为过，详细内容可以在其官网：<https://font.subf.dev/zh-cn/> 查看。（于我个人而言唯一的缺点就是过于圆润）
 
 ```bash
 brew install font-fira-code-nerd-font
