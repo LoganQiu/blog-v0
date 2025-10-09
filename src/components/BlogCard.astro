@@ -13,8 +13,8 @@ const postPath = getPostPath(post);
 const { status, isPinned, isDeprecated, badgeClass } = getStatusMeta(post.data.status);
 const cardClasses = [
   "relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground",
-  isPinned ? "bg-lime-50 dark:bg-lime-900/20 hover:border-lime-500/50" : "",
-  isDeprecated ? "bg-red-50 dark:bg-red-900/20 hover:border-red-500/50" : "",
+  isPinned ? "bg-lime-500/5 hover:border-lime-500" : "",
+  isDeprecated ? "bg-red-500/5 hover:border-red-500" : "",
 ]
   .filter(Boolean)
   .join(" ");

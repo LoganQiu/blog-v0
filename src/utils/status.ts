@@ -13,7 +13,7 @@ interface StatusMeta {
 }
 
 const DEFAULT_BADGE_BASE = "text-xs font-semibold border px-1 rounded";
-const DEFAULT_PINNED = "text-lime-600 border-lime-600/40 bg-lime-600/10";
+const DEFAULT_PINNED = "text-lime-500 border-lime-500/40 bg-lime-500/10";
 const DEFAULT_DEPRECATED = "text-red-500 border-red-500/60 bg-red-500/10";
 const DEFAULT_NEUTRAL = "text-muted border-muted/60 bg-muted/10";
 
