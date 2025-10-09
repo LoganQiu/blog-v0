@@ -2,6 +2,7 @@
 import type { CollectionEntry } from "astro:content";
 import Meta from "./Meta.astro";
 import { getPostPath } from "@/utils/getPostPath";
+import { getStatusMeta } from "@/utils/status";
 
 export interface Props {
   post: CollectionEntry<"blog">;
@@ -9,20 +10,14 @@ export interface Props {
 
 const { post } = Astro.props;
 const postPath = getPostPath(post);
-const status = post.data.status;
-const isPinned = status === "pinned";
-const isDeprecated = status === "deprecated";
+const { status, isPinned, isDeprecated, badgeClass } = getStatusMeta(post.data.status);
 const cardClasses = [
   "relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground",
+  isPinned ? "bg-lime-50 dark:bg-lime-900/20 hover:border-lime-500/50" : "",
+  isDeprecated ? "bg-red-50 dark:bg-red-900/20 hover:border-red-500/50" : "",
 ]
   .filter(Boolean)
   .join(" ");
-const badgeBaseClasses = "text-xs border px-1 rounded";
-const badgeClass = isPinned
-  ? `${badgeBaseClasses} text-lime-600 border-lime-600/40 bg-lime-600/10`
-  : isDeprecated
-    ? `${badgeBaseClasses} text-red-500 border-red-500/60 bg-red-500/10`
-    : `${badgeBaseClasses} text-muted border-muted/60 bg-muted/10`;
 ---
 
 <div class={cardClasses}>
@@ -38,7 +33,7 @@ const badgeClass = isPinned
     >
       {post.data.title}
     </a>
-    {status && <span class={badgeClass}>{status}</span>}
+    {status && badgeClass && <span class={badgeClass}>{status}</span>}
     {post.data.subtitle && (
       <small class="text-muted font-normal italic basis-full">{post.data.subtitle}</small>
     )}

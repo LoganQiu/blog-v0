@@ -5,6 +5,7 @@ import Meta from "@/components/Meta.astro";
 import TOC from "@/components/TOC.astro";
 import BackToTop from "@/components/BackToTop.astro";
 import { getPostPath, getSlugFromPath } from "@/utils/getPostPath";
+import { getStatusMeta } from "@/utils/status";
 
 export async function getStaticPaths() {
   const blogEntries = await getCollection("blog");
@@ -46,15 +47,9 @@ export async function getStaticPaths() {
 const { entry, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(entry);
 const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
-const status = entry.data.status;
-const isPinned = status === "pinned";
-const isDeprecated = status === "deprecated";
-const badgeBaseClasses = "text-xs font-semibold tracking-wide border px-2 py-0.5 rounded";
-const badgeClass = isPinned
-  ? `${badgeBaseClasses} text-accent border-accent/40 bg-accent/10`
-  : isDeprecated
-    ? `${badgeBaseClasses} text-muted border-muted/60 bg-muted/10`
-    : `${badgeBaseClasses} text-muted border-muted/40 bg-muted/10`;
+const { status, isPinned, isDeprecated, badgeClass } = getStatusMeta(entry.data.status, {
+  badgeBaseClass: "text-xs font-semibold tracking-wide border px-2 py-0.5 rounded",
+});
 ---
 
 <SingleLayout
@@ -72,7 +67,7 @@ const badgeClass = isPinned
   <article data-pagefind-body>
     <h1 class="flex flex-wrap items-center gap-2" transition:name={`blog-title-${entry.data.slug}`}>
       <span class:list={{ "line-through text-muted": isDeprecated }}>{entry.data.title}</span>
-      {status && <span class={badgeClass}>{status}</span>}
+      {status && badgeClass && <span class={badgeClass}>{status}</span>}
       {entry.data.subtitle && <small class="text-muted font-normal italic basis-full">{entry.data.subtitle}</small>}
     </h1>
     <Meta

@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import ListLayout from "@/layouts/ListLayout.astro";
 import BlogCard from "@/components/BlogCard.astro";
+import { getStatusWeight } from "@/utils/status";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -28,14 +29,10 @@ export async function getStaticPaths() {
 }
 
 const { posts, displayName } = Astro.props;
-const statusWeight = (status: string | undefined) => {
-  if (status === "pinned") return 1;
-  return 0;
-};
 
 const sortedPosts = posts.sort((a: any, b: any) => {
-  const statusA = statusWeight(a.data.status);
-  const statusB = statusWeight(b.data.status);
+  const statusA = getStatusWeight(a.data.status);
+  const statusB = getStatusWeight(b.data.status);
   if (statusA !== statusB) {
     return statusB - statusA;
   }

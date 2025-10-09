@@ -2,6 +2,7 @@
 import { getCollection } from "astro:content";
 import ListLayout from "@/layouts/ListLayout.astro";
 import { getPostPath } from "@/utils/getPostPath";
+import { getStatusMeta } from "@/utils/status";
 
 const blogPosts = await getCollection("blog", ({ data }) => !data.draft);
 const sortedPosts = blogPosts.sort((a, b) => {
@@ -9,13 +10,6 @@ const sortedPosts = blogPosts.sort((a, b) => {
   const dateB = b.data.moddate || b.data.pubdate;
   return dateB.valueOf() - dateA.valueOf();
 });
-
-const badgeBaseClasses = "text-xs font-semibold border px-1 rounded";
-const getBadgeClass = (status?: string) => {
-  if (status === "pinned") return `${badgeBaseClasses} text-lime-600 border-lime-600/40 bg-lime-600/10`;
-  if (status === "deprecated") return `${badgeBaseClasses} text-red-500 border-red-500/60 bg-red-500/10`;
-  return `${badgeBaseClasses} text-muted border-muted/60 bg-muted/10`;
-};
 
 // Group posts by year and month
 const postsByYearMonth = new Map<number, Map<string, typeof blogPosts>>();
@@ -60,15 +54,18 @@ const formatDate = (date: Date) => {
           <h2 class="border-none">{year}</h2>
           {sortedMonths.map((month) => (
             <ul class="list-none flex flex-wrap gap-x-4">
-              {yearMap.get(month)!.map((post) => (
-                <li class="inline-flex items-center gap-2">
-                  <span class="text-muted whitespace-nowrap">{formatDate(post.data.moddate || post.data.pubdate)}</span>
-                  <a href={getPostPath(post)} class="no-underline hover:underline hover:decoration-wavy">
-                    {post.data.title}
-                  </a>
-                  {post.data.status && <span class={getBadgeClass(post.data.status)}>{post.data.status}</span>}
-                </li>
-              ))}
+              {yearMap.get(month)!.map((post) => {
+                const { status, badgeClass, isDeprecated } = getStatusMeta(post.data.status);
+                return (
+                  <li class="inline-flex items-center gap-2">
+                    <span class="text-muted whitespace-nowrap">{formatDate(post.data.moddate || post.data.pubdate)}</span>
+                    <a href={getPostPath(post)} class="no-underline hover:underline hover:decoration-wavy" >
+                      {post.data.title}
+                    </a>
+                    {status && badgeClass && <span class={badgeClass}>{status}</span>}
+                  </li>
+                );
+              })}
             </ul>
           ))}
         </div>
