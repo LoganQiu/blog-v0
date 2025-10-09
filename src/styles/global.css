@@ -42,16 +42,16 @@
   }
   main {
     @apply font-article;
-  }
-  main a {
-    @apply break-words underline decoration-1 decoration-dashed underline-offset-4 hover:text-accent hover:decoration-wavy;
+    a {
+      @apply underline decoration-1 decoration-dashed decoration-muted underline-offset-4;
+    }
   }
   header,
   footer {
     @apply font-decoration;
   }
   a {
-    @apply break-words hover:text-accent hover:underline hover:decoration-wavy;
+    @apply break-words hover:underline hover:decoration-wavy;
   }
   hr {
     @apply border-muted;
