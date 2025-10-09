@@ -16,7 +16,7 @@ const blog = defineCollection({
     tags: z.array(z.string()).optional(),
     draft: z.boolean().default(false),
     katex: z.boolean().optional(),
-    pin: z.number().min(0).max(99).default(0).optional(),
+    status: z.enum(["pinned", "deprecated"]).optional(),
   }),
 });
 

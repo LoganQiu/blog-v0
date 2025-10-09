@@ -9,13 +9,39 @@ export interface Props {
 
 const { post } = Astro.props;
 const postPath = getPostPath(post);
+const status = post.data.status;
+const isPinned = status === "pinned";
+const isDeprecated = status === "deprecated";
+const cardClasses = [
+  "relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground",
+]
+  .filter(Boolean)
+  .join(" ");
+const badgeBaseClasses = "text-xs border px-1 rounded";
+const badgeClass = isPinned
+  ? `${badgeBaseClasses} text-lime-600 border-lime-600/40 bg-lime-600/10`
+  : isDeprecated
+    ? `${badgeBaseClasses} text-red-500 border-red-500/60 bg-red-500/10`
+    : `${badgeBaseClasses} text-muted border-muted/60 bg-muted/10`;
 ---
 
-<div class="relative border border-dashed border-muted/40 p-4 mb-4 hover:border-foreground transition duration-400">
-  {post.data.pin && post.data.pin > 0 && <span class="absolute top-0 right-0 pt-1 pr-2 text-sm text-accent">PIN</span>}
-  <h2 class="text-xl font-semibold mt-0 border-0 mb-2" transition:name={`blog-title-${post.data.slug}`}>
-    <a href={postPath}>{post.data.title}</a>
-    {post.data.subtitle && <small class="text-muted font-normal italic">{post.data.subtitle}</small>}
+<div class={cardClasses}>
+  <h2
+    class="text-xl font-semibold mt-0 border-0 mb-2 flex flex-wrap items-center gap-2"
+    transition:name={`blog-title-${post.data.slug}`}
+  >
+    <a
+      href={postPath}
+      class:list={{
+        "line-through text-muted": isDeprecated,
+      }}
+    >
+      {post.data.title}
+    </a>
+    {status && <span class={badgeClass}>{status}</span>}
+    {post.data.subtitle && (
+      <small class="text-muted font-normal italic basis-full">{post.data.subtitle}</small>
+    )}
   </h2>
   <Meta
     transition:name={`blog-meta-${post.data.slug}`}

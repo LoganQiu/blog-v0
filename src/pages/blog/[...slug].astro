@@ -46,6 +46,15 @@ export async function getStaticPaths() {
 const { entry, prevPost, nextPost } = Astro.props;
 const { Content, headings } = await render(entry);
 const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
+const status = entry.data.status;
+const isPinned = status === "pinned";
+const isDeprecated = status === "deprecated";
+const badgeBaseClasses = "text-xs font-semibold tracking-wide border px-2 py-0.5 rounded";
+const badgeClass = isPinned
+  ? `${badgeBaseClasses} text-accent border-accent/40 bg-accent/10`
+  : isDeprecated
+    ? `${badgeBaseClasses} text-muted border-muted/60 bg-muted/10`
+    : `${badgeBaseClasses} text-muted border-muted/40 bg-muted/10`;
 ---
 
 <SingleLayout
@@ -61,9 +70,10 @@ const ogImageUrl = `/blog/${entry.data.slug}/index.png`;
   katex={entry.data.katex}
 >
   <article data-pagefind-body>
-    <h1 transition:name={`blog-title-${entry.data.slug}`}>
-      {entry.data.title}
-      {entry.data.subtitle && <small class="text-muted font-normal italic">{entry.data.subtitle}</small>}
+    <h1 class="flex flex-wrap items-center gap-2" transition:name={`blog-title-${entry.data.slug}`}>
+      <span class:list={{ "line-through text-muted": isDeprecated }}>{entry.data.title}</span>
+      {status && <span class={badgeClass}>{status}</span>}
+      {entry.data.subtitle && <small class="text-muted font-normal italic basis-full">{entry.data.subtitle}</small>}
     </h1>
     <Meta
       transition:name={`blog-meta-${entry.data.slug}`}

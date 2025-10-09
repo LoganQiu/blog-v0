@@ -9,7 +9,7 @@ categories:
 tags:
   - windows
   - macOS
-pin: 1
+status: pinned
 ---
 
 > [!important]

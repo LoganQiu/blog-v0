@@ -8,7 +8,7 @@ categories:
   - Tech 技术
 tags:
   - macOS
-pin: 1
+status: pinned
 ---
 
 ## 允许安装并运行任何来源的应用

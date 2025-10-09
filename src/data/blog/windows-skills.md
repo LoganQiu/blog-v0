@@ -8,7 +8,7 @@ categories:
   - Tech 技术
 tags:
   - windows
-pin: 1
+status: pinned
 ---
 
 ## 系统字体更改

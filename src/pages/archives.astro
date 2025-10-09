@@ -10,6 +10,13 @@ const sortedPosts = blogPosts.sort((a, b) => {
   return dateB.valueOf() - dateA.valueOf();
 });
 
+const badgeBaseClasses = "text-xs font-semibold border px-1 rounded";
+const getBadgeClass = (status?: string) => {
+  if (status === "pinned") return `${badgeBaseClasses} text-lime-600 border-lime-600/40 bg-lime-600/10`;
+  if (status === "deprecated") return `${badgeBaseClasses} text-red-500 border-red-500/60 bg-red-500/10`;
+  return `${badgeBaseClasses} text-muted border-muted/60 bg-muted/10`;
+};
+
 // Group posts by year and month
 const postsByYearMonth = new Map<number, Map<string, typeof blogPosts>>();
 
@@ -59,6 +66,7 @@ const formatDate = (date: Date) => {
                   <a href={getPostPath(post)} class="no-underline hover:underline hover:decoration-wavy">
                     {post.data.title}
                   </a>
+                  {post.data.status && <span class={getBadgeClass(post.data.status)}>{post.data.status}</span>}
                 </li>
               ))}
             </ul>

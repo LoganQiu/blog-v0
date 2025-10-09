@@ -8,6 +8,7 @@ categories:
 tags:
   - blog
   - astro
+status: deprecated
 ---
 
 > [!warning]
