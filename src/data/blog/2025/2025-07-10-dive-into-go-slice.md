@@ -1,13 +1,12 @@
 ---
 title: 探究 Slice
-desc: 粗浅探究 Slice 在 Go 中的行为模式
+desc: 粗浅探究 Slice 在 Go 中的行为模式（基于 Go 1.24）
 slug: dive-into-go-slice
 pubdate: 2025-07-10
 categories:
   - Tech 技术
 tags:
   - go
-  - go 1.24
 ---
 
 > 以下内容基于 Go 1.24
