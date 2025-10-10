@@ -25,7 +25,7 @@ export default defineConfig({
     },
     wrap: false,
     styleOverrides: {
-      borderColor: "color-mix(in srgb, var(--muted) 20%, transparent)",
+      borderColor: "color-mix(in srgb, var(--muted) 20%, var(--background) 80%)",
       borderRadius: '0',
       codeFontFamily: "var(--font-code)",
       codeFontSize: "0.75rem",
