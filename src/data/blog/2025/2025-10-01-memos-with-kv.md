@@ -8,6 +8,7 @@ categories:
 tags:
   - blog
   - memos
+status: deprecated
 ---
 
 > 思前想后，这种方法心智负担过重，给博客也引入了过多插件，决定还是整个 [usememos](https://github.com/usememos/memos)，无论是从数据备份还是界面美观程度都更胜一筹，等挑选到合适的 VPS 就把现在的 Memos 给替换掉。
