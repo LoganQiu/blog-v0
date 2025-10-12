@@ -210,7 +210,7 @@
   }
   /* 脚注引用样式 */
   a[data-footnote-ref] {
-    @apply no-underline;
+    @apply text-accent no-underline hover:underline hover:decoration-wavy;
     &::before {
       content: "[";
     }
