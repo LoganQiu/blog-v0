@@ -4,7 +4,7 @@ desc: 原作者在十多年前的超前远见，看到了如今百度的现状
 slug: the-death-of-baidu
 pubdate: 2024-08-20
 categories:
-  - Misc 杂项
+  - Thoughts 思考
 tags:
   - repost
 ---

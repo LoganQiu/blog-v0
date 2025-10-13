@@ -4,7 +4,7 @@ desc: 本文较详细地阐述了国内 BT 环境极为恶劣的原因
 slug: why-domestic-bt-env-so-bad
 pubdate: 2023-09-11
 categories:
-  - Misc 杂项
+  - Thoughts 思考
 tags:
   - repost
   - bt
