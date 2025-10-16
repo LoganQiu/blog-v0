@@ -8,6 +8,7 @@ categories:
 tags:
   - blog
   - image
+  - cloudflare
 ---
 
 > 写的有点乱，搞不定可以邮件联系。

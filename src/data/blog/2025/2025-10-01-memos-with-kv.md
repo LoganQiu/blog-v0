@@ -8,6 +8,7 @@ categories:
 tags:
   - blog
   - memos
+  - cloudflare
 status: deprecated
 ---
 

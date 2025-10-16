@@ -10,7 +10,9 @@ tags:
 ---
 
 转载此文仅感叹作者在 2009 年就能写下如此真知灼见，具有前瞻性的文章，深表佩服。
+
 原地址：<http://blog.csdn.net/atoon_li/archive/2009/05/08/4160386>
+
 原作者 [CSDN@atoon_li](https://blog.csdn.net/atoon_li) 已删除文章，但可以去 [互联网档案计划（Internet Archive）存档](https://web.archive.org/web/20091202080055/http://blog.csdn.net:80/atoon_li/archive/2009/05/08/4160386.aspx) 里找到。
 
 ---
