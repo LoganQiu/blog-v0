@@ -154,6 +154,15 @@
       @apply bg-muted/10;
     }
   }
+  dl {
+    @apply my-6 tracking-wider md:grid md:grid-cols-[auto_1fr] md:gap-x-8 md:gap-y-1;
+  }
+  dt {
+    @apply font-semibold italic;
+  }
+  dd {
+    @apply text-sm text-muted pl-4 md:pl-0;
+  }
   img {
     @apply mx-auto my-8 border border-muted/20;
   }

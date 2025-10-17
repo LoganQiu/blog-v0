@@ -22,6 +22,7 @@
     "hast-util-from-html": "^2.0.3",
     "katex": "^0.16.23",
     "rehype-katex": "^7.0.1",
+    "remark-definition-list": "^2.0.0",
     "remark-math": "^6.0.0",
     "satori": "^0.18.3",
     "tailwindcss": "^4.1.14",
