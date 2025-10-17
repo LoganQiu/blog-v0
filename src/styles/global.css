@@ -103,19 +103,27 @@
   ul {
     @apply list-disc pl-6 my-6;
   }
-  ul ul {
+  ul ul,
+  ol ul {
     @apply list-[circle];
   }
-  ul ul ul {
+  ul ul ul,
+  ol ul ul,
+  ul ol ul,
+  ol ol ul {
     @apply list-[square];
   }
   ol {
     @apply list-decimal pl-6 my-6;
   }
-  ol ol {
+  ol ol,
+  ul ol {
     @apply list-[lower-alpha];
   }
-  ol ol ol {
+  ol ol ol,
+  ul ol ol,
+  ol ul ol,
+  ul ul ol {
     @apply list-[lower-roman];
   }
   li {
