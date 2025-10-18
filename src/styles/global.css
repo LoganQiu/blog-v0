@@ -9,7 +9,7 @@
   --color-foreground: var(--foreground);
   --color-accent: var(--accent);
   --color-muted: var(--muted);
-  --font-article: var(--font-Libertinus), "KingHwaOldSong", "SimSun", "Songti SC", serif;
+  --font-article: "Palatino", "Palatino Linotype", var(--font-Libertinus), "KingHwaOldSong", "SimSun", "Songti SC", serif;
   --font-decoration: var(--font-Jost), sans-serif;
   --font-kai: "ChillKai", "SimKai", "KaiTi", "STKaiti", "Kaiti SC", Georgia, serif;
   --font-code: "Monaco", "Consolas", "Courier New", monospace;
