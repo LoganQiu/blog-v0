@@ -71,14 +71,6 @@ export default defineConfig({
         styles: ["normal"],
         subsets: ["latin"],
       },
-      {
-        name: "Libertinus Serif",
-        cssVariable: "--font-Libertinus",
-        provider: fontProviders.fontsource(),
-        weights: [400, 700],
-        styles: ["normal", "italic"],
-        subsets: ["latin"],
-      },
     ],
   },
 });
