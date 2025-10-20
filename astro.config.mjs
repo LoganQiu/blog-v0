@@ -14,7 +14,7 @@ import { SITE } from "./src/config";
 
 export default defineConfig({
   site: SITE.website,
-  trailingSlash: 'never',
+  // trailingSlash: 'never',
   integrations: [sitemap(), d2({
     layout: "elk",
   }), expressiveCode({
