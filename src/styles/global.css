@@ -253,7 +253,7 @@
   }
 
   .art {
-    @apply text-transparent 
+    @apply text-transparent
       transition-all duration-200 ease-linear
       -translate-x-1 -translate-y-1
       [text-shadow:-2px_-2px_0_#6bb6ff,0_0_0_#51cf66,2px_2px_0_#ffd93d,4px_4px_0_#ff6b6b,6px_6px_0_#845ec2];
