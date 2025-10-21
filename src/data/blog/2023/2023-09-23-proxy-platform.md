@@ -75,7 +75,8 @@ Meta 内核新特性出站连接支持：VLESS XTLS/Trojan XTLS/Hysteria
 | Clash Verge Rev | [clash-verge-rev/clash-verge-rev](https://github.com/clash-verge-rev/clash-verge-rev) | 明确表明是 [Clash Verge](https://github.com/zzzgydi/clash-verge) 的继任者（使用 Clash.Meta） |
 | ShellClash      | [juewuy/ShellClash](https://github.com/juewuy/ShellClash)    | 重命名为 `ShellCrash` + 改用 Clash.Meta 和 sing-box          |
 | FlClash         | [chen08209/FlClash](https://github.com/chen08209/FlClash)    | 全平台嗷全平台（除了 iOS）                                   |
-| Mihomo Party    | [pompurin404/mihomo-party](https://github.com/pompurin404/mihomo-party) |                                                              |
+| Mihomo Party    | [pompurin404/mihomo-party](https://github.com/pompurin404/mihomo-party) | 不推荐，v1.5.12 之后被出售给某机场团队                       |
+| Sparkle         | [xishang0128/sparkle](https://github.com/xishang0128/sparkle) | Mihomo Party 商业化后分支而来，更稳定                        |
 | GUI.for.Clash   | [GUI-for-Cores/GUI.for.Clash](https://github.com/GUI-for-Cores/GUI.for.Clash) |                                                              |
 
 ## sing-box
