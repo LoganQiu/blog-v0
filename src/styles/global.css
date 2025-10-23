@@ -57,7 +57,7 @@
     @apply border-muted;
   }
   article {
-    @apply my-8 tracking-wide;
+    @apply my-8 tracking-wider;
   }
   h1 {
     @apply text-3xl my-8 font-bold relative;
