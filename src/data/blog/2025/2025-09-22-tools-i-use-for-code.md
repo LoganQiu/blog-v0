@@ -47,7 +47,7 @@ brew install font-maple-mono-nf-cn
 
 ## Terminal && Shell
 
-macOS：iTerm2 + zsh
+macOS：<del>iTerm2</del>ghostty + zsh
 
 Windows：Windows Terminal + PowerShell
 

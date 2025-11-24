@@ -3,7 +3,7 @@ title: Windows & macOS 软件
 desc: Windows 和 macOS 的软件管理策略以及好用的软件推荐
 slug: softwares
 pubdate: 2024-01-03
-moddate: 2025-07-09
+moddate: 2025-11-24
 categories:
   - Tools 工具
 tags:
@@ -212,6 +212,9 @@ Further help:
 - [iStat Menus](https://bjango.com/mac/istatmenus/):mac:<br>
   大版本付费制，组件样式美观，免费的可以看开源的 [Stats](https://github.com/exelban/stats)。
 
+- [Sniffnet](https://github.com/GyulyVGC/sniffnet):win::mac:<br>
+  轻松监控网络流量的软件，体积小巧界面美观。
+
 ## 密码管理器
 
 - [Bitwarden](https://bitwarden.com/):win::mac:<br>
@@ -313,5 +316,8 @@ Further help:
 
 - [RCDefaultApp](https://rubicode.com/Software/RCDefaultApp/) （2025/07/09 添加）<br>
   可以批量设置默认应用。此软件最新更新在 2009 年，好在下载安装后基本还能正常使用。如果不介意使用命令行工具设置，还可以试试 [duti](https://github.com/moretension/duti)，不过也有个把年头不更新了。
+
+- [Mole](https://github.com/tw93/Mole)（2025/11/24 添加）<br>
+  像鼹鼠一样深入挖掘来优化你的 Mac！好用！
 
 > 通篇未包含 IObit 和 CCleaner 两家的任何软件，因为笔者已默认其为流氓软件与 2345 之流并无明显区别，然而其中其实也不乏能使用的软件（如 CC 的 Defraggler），本着宁可错杀不可放过原则，全部舍弃。
